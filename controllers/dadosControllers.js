@@ -1,34 +1,13 @@
-const db = require("../db.js");
+const db = require("../db/conection.js");
 
 
 const Dados = async ( request, response)=>{
     try {
-        const token = request.headers["authorization"]
-        //verifica a existencia do token
-        if (!token) {
-            return response.status(401).json({
-                message:'Token não fornecido'
-            });
-        }
-        const resToken = validate(token);
-        //valida a sesão
-        if (resToken) {
-            return response.status(401).json({
-                message:"token invalido"
-            })
-        }
-        //valida as entradas
-        const { user_id, event_id} = request.body;
-        if(!(user_id && event_id)){
-            return response.status(400).json({
-                message: "invalid data"
-            })
-        }
-        const sql = "INSERT INTO enrollments( user_id, event_id ) VALUES ( ?, ? )"
-        const res = await db.query( sql, [ user_id, event_id ] )
-
+        const sql = "SELECT esp_id, dados_tipo, dados_valor, dados_generate, dados_timestamp FROM dados"
+        const res = await db.query(sql)
         return response.status(200).json({
-            message:"suscesso"
+            message:"suscesso",
+            data: res
         })
 
     } catch (error) {

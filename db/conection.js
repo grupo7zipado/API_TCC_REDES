@@ -10,6 +10,7 @@ const config = {
     database: process.env.DB_NAME
 }
 let connection;
+console.log(config);
 
 try {
     connection = mysql.createPool(config)

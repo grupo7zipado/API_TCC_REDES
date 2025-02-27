@@ -3,7 +3,7 @@ const cors = require('cors');
 const express = require('express');
 
 //rotas
-const router = require('./routes/index');
+const router = require('./routers/router');
 
 const app = express();
 app.use(cors());
