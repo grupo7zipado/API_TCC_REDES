@@ -23,29 +23,29 @@ const LastDataUsers = async ( request, response)=>{
         `
             SELECT esp_id, 
                 (SELECT dados_valor 
-                    FROM dados 
-                    WHERE dados.esp_id = d.esp_id AND dados_tipo = 'temperatura' 
-                    ORDER BY dados_generate DESC LIMIT 1) AS temp_valor,
-                    (SELECT dados_generate
-                    FROM dados
-                    WHERE dados.esp_id = d.esp_id AND dados_tipo = 'temperatura' 
-                    ORDER BY dados_generate DESC LIMIT 1) AS temp_generate,
-                    (SELECT dados_valor 
-                    FROM dados 
-                    WHERE dados.esp_id = d.esp_id AND dados_tipo = 'bpm' 
-                    ORDER BY dados_generate DESC LIMIT 1) AS bpm_valor,
-                    (SELECT dados_generate
-                    FROM dados
-                    WHERE dados.esp_id = d.esp_id AND dados_tipo = 'bpm' 
-                    ORDER BY dados_generate DESC LIMIT 1) AS bpm_generate,
-                    (SELECT dados_valor 
-                    FROM dados 
-                    WHERE dados.esp_id = d.esp_id AND dados_tipo = 'oxigenacao' 
-                    ORDER BY dados_generate DESC LIMIT 1) AS oxig_valor,
-                    (SELECT dados_generate
-                    FROM dados
-                    WHERE dados.esp_id = d.esp_id AND dados_tipo = 'oxigenacao' 
-                    ORDER BY dados_generate DESC LIMIT 1) AS oxig_generate
+                FROM dados 
+                WHERE dados.esp_id = d.esp_id AND dados_tipo = 'temperatura' 
+                ORDER BY dados_generate DESC LIMIT 1) AS temp_valor,
+                (SELECT dados_generate
+                FROM dados
+                WHERE dados.esp_id = d.esp_id AND dados_tipo = 'temperatura' 
+                ORDER BY dados_generate DESC LIMIT 1) AS temp_generate,
+                (SELECT dados_valor 
+                FROM dados 
+                WHERE dados.esp_id = d.esp_id AND dados_tipo = 'bpm' 
+                ORDER BY dados_generate DESC LIMIT 1) AS bpm_valor,
+                (SELECT dados_generate
+                FROM dados
+                WHERE dados.esp_id = d.esp_id AND dados_tipo = 'bpm' 
+                ORDER BY dados_generate DESC LIMIT 1) AS bpm_generate,
+                (SELECT dados_valor 
+                FROM dados 
+                WHERE dados.esp_id = d.esp_id AND dados_tipo = 'oxigenacao' 
+                ORDER BY dados_generate DESC LIMIT 1) AS oxig_valor,
+                (SELECT dados_generate
+                FROM dados
+                WHERE dados.esp_id = d.esp_id AND dados_tipo = 'oxigenacao' 
+                ORDER BY dados_generate DESC LIMIT 1) AS oxig_generate
             FROM dados d
             GROUP BY esp_id;
         `
