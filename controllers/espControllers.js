@@ -25,4 +25,4 @@ const CadastroEsp = async( request, response)=>{
     }
 }
 
-module.exports = {};
+module.exports = {CadastroEsp};
