@@ -1,4 +1,5 @@
-const db = require("../db/conection")
+const db = require("../db/conection");
+const { SqlCadastroUsuario } = require("./sql");
 
 const cadastroUsuarios = async (request, response)=>{
     try {
@@ -10,8 +11,7 @@ const cadastroUsuarios = async (request, response)=>{
             })
         }
         const values = [ usu_nome, usu_nascimento]
-        const sql = "INSERT INTO usuarios( usu_nome, usu_nascimento) VALUE ( ?, ?)"
-        const res = await db.query( sql , values);
+        const res = await db.query( SqlCadastroUsuario , values);
 
         return response.status(200).json({
             message:"suscesso",
