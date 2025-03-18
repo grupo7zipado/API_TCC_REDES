@@ -4,6 +4,7 @@ const SqlCadastroEsp = "INSET INTO esp( esp_mac) VALUE(?)";
 // cadastro de usuarios
 const SqlCadastroUsuario = "INSERT INTO usuarios( usu_nome, usu_nascimento) VALUE ( ?, ?);"
 
+// cadastro do relacionamento usuario <> esp
 const SqlCadastroUsuarioEsp = `
     INSERT INTO 
         usuariosEsp( 
