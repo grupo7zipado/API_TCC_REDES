@@ -1,14 +1,13 @@
 const db = require("../db/conection.js");
-const { SqlLastDataUser } = require("./sql.js");
+const { SqlLastDataUser, SqlSelectAllDataUser } = require("./sql.js");
 
 
-const Dados = async ( request, response)=>{
+const AllDataUser = async ( request, response)=>{
     try {
-        const sql = "SELECT esp_id, dados_tipo, dados_valor, dados_generate, dados_timestamp FROM dados"
-        const res = await db.query(sql)
+        const res = await db.query(SqlSelectAllDataUser)
         return response.status(200).json({
             message:"suscesso",
-            data: res
+            data: res[0]
         })
 
     } catch (error) {
@@ -34,4 +33,4 @@ const LastDataUsers = async ( request, response)=>{
     }
 }
 
-module.exports = { Dados, LastDataUsers }
+module.exports = { AllDataUser, LastDataUsers }

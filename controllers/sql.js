@@ -20,14 +20,36 @@ const SqlCadastroUsuarioEsp = `
 
 const SqlSelectAllDataUser = `
     SELECT 
+        -- talvez não precisa trazer por prop
+        -- usu_id, 
+        -- esu.use_id, 
+        -- esp_id, 
+        -- use_status,
+        -- trazer 100%
         dados_id, 
         dados_tipo, 
         dados_valor, 
-        dados_generate 
+        dados_generate
     FROM 
-        dados 
+        usuariosEsp esu
+    INNER JOIN 
+        dados dad 
+    ON 
+        esu.use_id = dad.use_id
     WHERE 
-        use_id = ?
+        -- pega o ultimo relacionamento esp <> usuario
+        esu.use_id = ( 
+            SELECT 
+                MAX(use_id) 
+            FROM 
+                usuariosEsp t
+            WHERE 
+                t.usu_id = esu.usu_id
+        )
+    -- fitrar pro id
+    AND 
+        usu_id = 1
+    ORDER BY dados_generate DESC
     ;
 `
 
@@ -110,4 +132,4 @@ const SqlLastDataUser = `
     ;
 `
 
-module.exports = { SqlCadastroEsp, SqlLastDataUser, SqlCadastroUsuario};
+module.exports = { SqlCadastroEsp, SqlCadastroUsuario, SqlCadastroUsuarioEsp, SqlSelectAllDataUser, SqlLastDataUser, };
