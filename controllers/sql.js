@@ -1,8 +1,31 @@
 // cadastro de esp
-const SqlCadastroEsp = "INSET INTO esp( esp_mac) VALUE(?)";
+const SqlCadastroEsp = `
+    INSET INTO 
+        esp( 
+            esp_mac
+        )   
+    VALUE 
+        (
+            ?
+        )
+    ;
+`
+;
 
 // cadastro de usuarios
-const SqlCadastroUsuario = "INSERT INTO usuarios( usu_nome, usu_nascimento) VALUE ( ?, ?);"
+const SqlCadastroUsuario = `
+    INSERT INTO 
+        usuarios( 
+            usu_nome, 
+            usu_nascimento
+        ) 
+    VALUE 
+        ( 
+            ?, 
+            ?
+        );
+`
+;
 
 // cadastro do relacionamento usuario <> esp
 const SqlCadastroUsuarioEsp = `
@@ -17,7 +40,9 @@ const SqlCadastroUsuarioEsp = `
     )
     ;
 `
+;
 
+// Retorna todos os Dados relacionado ao ultimo relacionamento do usuario com um esp
 const SqlSelectAllDataUser = `
     SELECT 
         -- talvez não precisa trazer por prop
@@ -48,10 +73,11 @@ const SqlSelectAllDataUser = `
         )
     -- fitrar pro id
     AND 
-        usu_id = 1
+        usu_id = ?
     ORDER BY dados_generate DESC
     ;
 `
+;
 
 // select do ultimo dado de temperatura, bpm e oxigenação registrado do usuario
 const SqlLastDataUser = `
@@ -131,5 +157,7 @@ const SqlLastDataUser = `
         usu.usu_id 
     ;
 `
+;
 
+// Exporta todas os Query
 module.exports = { SqlCadastroEsp, SqlCadastroUsuario, SqlCadastroUsuarioEsp, SqlSelectAllDataUser, SqlLastDataUser, };
