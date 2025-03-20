@@ -1,6 +1,6 @@
 // cadastro de esp
 const SqlCadastroEsp = `
-    INSET INTO 
+    INSERT INTO 
         esp( 
             esp_mac
         )   

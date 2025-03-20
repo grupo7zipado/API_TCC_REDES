@@ -20,8 +20,9 @@ const CadastroEsp = async( request, response)=>{
         }
 
         // Cadastra o esp
-        const values = [ esp_mac]
-        const res = await db.query( SqlCadastroEsp, values)
+        console.log(esp_mac);
+        
+        const res = await db.query( SqlCadastroEsp, esp_mac)
 
         //retorna sucesso
         return response.status(200).json({
