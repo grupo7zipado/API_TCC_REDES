@@ -100,7 +100,7 @@ const SqlLastDataUser = `
                 -- tipo temperatura
                 dados_tipo = 'temperatura' 
             -- apenas o ultimo registro com base quando o dado foi gerado
-            ORDER BY dados_generate DESC LIMIT 1
+            ORDER BY dados_id DESC LIMIT 1
         ) AS temp_valor,
         (
             SELECT 
@@ -114,7 +114,7 @@ const SqlLastDataUser = `
                 -- tipo bpm
                 dados_tipo = 'bpm' 
             -- apenas o ultimo registro com base quando o dado foi gerado
-            ORDER BY dados_generate DESC LIMIT 1 
+            ORDER BY dados_id DESC LIMIT 1 
         ) AS bpm_valor,
         (
             SELECT 
@@ -128,7 +128,7 @@ const SqlLastDataUser = `
                 -- tipo oxigenacao
                 dados_tipo = 'oxigenacao' 
             -- apenas o ultimo registro com base quando o dado foi gerado
-            ORDER BY dados_generate DESC LIMIT 1 
+            ORDER BY dados_id DESC LIMIT 1 
             ) AS oxig_valor
     FROM 
         usuariosEsp esu
