@@ -9,8 +9,9 @@ const AllDataUser = async ( request, response)=>{
     try {
 
         // Recebe os dados do body
-        const { usu_id} = request.body;
-
+        const { usu_id} = request.params;
+        console.log(request.params);
+        
         // Verifica os dados 
         if(!usu_id){
             return response.status(400).json({
