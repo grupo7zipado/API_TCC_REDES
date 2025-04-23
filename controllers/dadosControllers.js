@@ -9,18 +9,18 @@ const AllDataUser = async ( request, response)=>{
     try {
 
         // Recebe os dados do body
-        const { usu_id} = request.params;
+        const { use_id} = request.params;
         console.log(request.params);
         
         // Verifica os dados 
-        if(!usu_id){
+        if(!use_id){
             return response.status(400).json({
                 message: "invalid data"
             })
         }
 
         // Seleciona os dados do usuario
-        const values = [ usu_id];
+        const values = [ use_id, use_id, use_id];
         const res = await db.query( SqlSelectAllDataUser, values);
 
         // Retorna os dados
