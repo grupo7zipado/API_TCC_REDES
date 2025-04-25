@@ -2,7 +2,7 @@
 // Conexao com banco
 const db = require("../db/conection");
 // SQL
-const { SqlCadastroUsuario } = require("./sql");
+const { SqlCadastroUsuario, SqlDadosUsuarios } = require("./sql");
 
 // Cadastro de Usuarios
 const cadastroUsuarios = async (request, response)=>{
@@ -37,5 +37,37 @@ const cadastroUsuarios = async (request, response)=>{
     }
 };
 
+
+const dadosUsuarios = async ()=>{
+    try {
+
+        // Recebe os dados do body
+        const { usu_id } = request.params;
+
+        // Verifica se os dados do usuarios existem 
+        if(!usu_id){
+            return response.status(400).json({
+                message: "invalid data"
+            })
+        }
+
+        // Cadastra o usuario
+        const values = [ usu_id ]
+        const res = await db.query( SqlDadosUsuarios , values);
+
+        // Retorna sucesso
+        return response.status(200).json({
+            message:"suscesso",
+            data: res
+        })
+
+    // Em caso de Erro
+    } catch (error) {
+        return response.status(400).json({
+            message:"error",
+            error: error
+        })
+    }
+}
 // Exporta as Funcões
-module.exports =  {cadastroUsuarios};
+module.exports =  {cadastroUsuarios, dadosUsuarios };

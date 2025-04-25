@@ -9,7 +9,7 @@ const dadosRouter = express.Router();
 
 // Asocia a funções as rotas
 // Todos os dados do usuarios
-dadosRouter.get('/allDataUser/:usu_id', AllDataUser);
+dadosRouter.get('/allDataUser/:use_id', AllDataUser);
 // Pega o ultimo registro de dados de todos os usuarios
 dadosRouter.get('/lastDataUsers', LastDataUsers);
 

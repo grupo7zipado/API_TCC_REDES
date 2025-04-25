@@ -88,8 +88,8 @@ const SqlSelectAllDataUser = `
             dados_tipo, 
             dados_valor, 
             DATE_FORMAT(dados_generate,'%d/%m/%Y') AS dados_generate FROM dados
-        WHERE d
-            ados_tipo = 'oxigenacao' 
+        WHERE 
+            dados_tipo = 'oxigenacao' 
             AND 
             use_id = ?
         ORDER BY 
@@ -255,5 +255,18 @@ const SqlLastDataUser = `
 `
 ;
 
+
+const SqlDadosUsuarios = `
+    SELECT 
+        usu_nome,
+        usu_nascimento
+    FROM 
+        usuarios
+    WHERE 
+        usu_id = ?
+        ;
+`
+;
+
 // Exporta todas os Query
-module.exports = { SqlCadastroEsp, SqlCadastroUsuario, SqlCadastroUsuarioEsp, SqlSelectAllDataUser, SqlLastDataUser, };
+module.exports = { SqlCadastroEsp, SqlCadastroUsuario, SqlCadastroUsuarioEsp, SqlSelectAllDataUser, SqlLastDataUser, SqlDadosUsuarios};

@@ -23,6 +23,8 @@ const AllDataUser = async ( request, response)=>{
         const values = [ use_id, use_id, use_id];
         const res = await db.query( SqlSelectAllDataUser, values);
 
+        
+
         // Retorna os dados
         return response.status(200).json({
             message:"sucesso",
