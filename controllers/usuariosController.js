@@ -38,7 +38,7 @@ const cadastroUsuarios = async (request, response)=>{
 };
 
 
-const dadosUsuarios = async ()=>{
+const dadosUsuarios = async (request, response)=>{
     try {
 
         // Recebe os dados do body
@@ -58,7 +58,7 @@ const dadosUsuarios = async ()=>{
         // Retorna sucesso
         return response.status(200).json({
             message:"suscesso",
-            data: res
+            data: res[0]
         })
 
     // Em caso de Erro
