@@ -43,9 +43,8 @@ const SqlCadastroUsuarioEsp = `
 ;
 
 // Retorna todos os Dados relacionado ao ultimo relacionamento do usuario com um esp
-
+/*
 const SqlSelectAllDataUser = `
-    
 (
     SELECT 
 		dados_id, 
@@ -60,7 +59,6 @@ const SqlSelectAllDataUser = `
         use_id = ?
     ORDER BY 
         dados_id 
-        DESC
     LIMIT 
         100
     )
@@ -77,7 +75,6 @@ const SqlSelectAllDataUser = `
             use_id = ?
         ORDER BY 
             dados_id 
-            DESC
         LIMIT 
             100
     )
@@ -87,22 +84,22 @@ const SqlSelectAllDataUser = `
             dados_id, 
             dados_tipo, 
             dados_valor, 
-            DATE_FORMAT(dados_generate,'%d/%m/%Y') AS dados_generate FROM dados
+            DATE_FORMAT(dados_generate,'%d/%m/%Y') AS dados_generate 
+        FROM 
+            dados
         WHERE 
             dados_tipo = 'oxigenacao' 
             AND 
             use_id = ?
         ORDER BY 
             dados_id 
-            DESC
         LIMIT 
             100
     )
 `
 ;
+*/
 
-
-/*
 const SqlSelectAllDataUser = `
     SELECT 
         -- talvez não precisa trazer por prop
@@ -134,9 +131,8 @@ const SqlSelectAllDataUser = `
     -- fitrar pro id
     AND 
         usu_id = ?
-    ORDER BY dados_generate DESC;
+    ORDER BY dados_generate;
 `;
-*/
 /*
 const SqlSelectAllDataUser = `
     SELECT 
@@ -182,7 +178,7 @@ const SqlLastDataUser = `
         esu.usu_id, 
         esu.esp_id, 
         usu.usu_nome, 
-        usu.usu_nascimento,
+        DATE_FORMAT(usu_nascimento,'%d/%m/%Y') AS usu_nascimento ,
         (
             -- seleciona o valor do dado 
             SELECT 
