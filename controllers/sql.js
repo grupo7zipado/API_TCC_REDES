@@ -260,9 +260,29 @@ const SqlDadosUsuarios = `
         usuarios
     WHERE 
         usu_id = ?
-        ;
+    ;
+`
+;
+
+const SqlTodosUsuarios = `
+    SELECT 
+        usu_id, 
+        usu_nome 
+    FROM 
+        usuarios
+    ;
+`
+;
+
+const SqlTodosEsps = `
+    SELECT
+        esp_id,
+        esp_mac
+    FROM
+        esp
+    ;
 `
 ;
 
 // Exporta todas os Query
-module.exports = { SqlCadastroEsp, SqlCadastroUsuario, SqlCadastroUsuarioEsp, SqlSelectAllDataUser, SqlLastDataUser, SqlDadosUsuarios};
+module.exports = { SqlCadastroEsp, SqlCadastroUsuario, SqlCadastroUsuarioEsp, SqlSelectAllDataUser, SqlLastDataUser, SqlDadosUsuarios, SqlTodosUsuarios, SqlTodosEsps};

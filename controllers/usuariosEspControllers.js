@@ -2,7 +2,7 @@
 // Conexão com Banco de dados
 const db = require("../db/conection.js");
 // SQL
-const {SqlCadastroUsuarioEsp } = require("./sql.js");
+const {SqlCadastroUsuarioEsp, SqlTodosEsps, SqlTodosUsuarios } = require("./sql.js");
 
 
 // Relaciona o Usuario com o Esp
@@ -37,6 +37,29 @@ const CadatroUsuarioEsp = async ( request, response)=>{
         })
     }
 };
+const ListarUsuariosEsps = async ( request, response)=>{
+    try {
+
+        // Cadastra o relacionamento do Usuario com Esp
+        const resUser = await db.query(SqlTodosUsuarios);
+        const resEsp = await db.query(SqlTodosEsps);
+        // Retorna sucesso
+        return response.status(200).json({
+            message: "suscesso",
+            data: {
+                usuarios: resUser[0],
+                esps: resEsp[0]
+            }
+        })
+
+    // Em caso de erro
+    } catch (error) {
+        return response.status(400).json({
+            message:"error",
+            error: error
+        })
+    }
+}
 
 // Exporta as Funcões
-module.exports = { CadatroUsuarioEsp,};
+module.exports = { CadatroUsuarioEsp, ListarUsuariosEsps};
