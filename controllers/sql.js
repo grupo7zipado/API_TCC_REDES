@@ -284,5 +284,15 @@ const SqlTodosEsps = `
 `
 ;
 
+const SqlStatusUpdateUsuariosEsp = `
+UPDATE 
+    usuariosEsp
+SET 
+    use_status = 1
+WHERE 
+    esp_id = ?
+`
+
+
 // Exporta todas os Query
-module.exports = { SqlCadastroEsp, SqlCadastroUsuario, SqlCadastroUsuarioEsp, SqlSelectAllDataUser, SqlLastDataUser, SqlDadosUsuarios, SqlTodosUsuarios, SqlTodosEsps};
+module.exports = { SqlCadastroEsp, SqlCadastroUsuario, SqlCadastroUsuarioEsp, SqlSelectAllDataUser, SqlLastDataUser, SqlDadosUsuarios, SqlTodosUsuarios, SqlTodosEsps, SqlStatusUpdateUsuariosEsp};

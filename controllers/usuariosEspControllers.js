@@ -2,7 +2,7 @@
 // Conexão com Banco de dados
 const db = require("../db/conection.js");
 // SQL
-const {SqlCadastroUsuarioEsp, SqlTodosEsps, SqlTodosUsuarios } = require("./sql.js");
+const {SqlCadastroUsuarioEsp, SqlTodosEsps, SqlTodosUsuarios, SqlStatusUpdateUsuariosEsp } = require("./sql.js");
 
 
 // Relaciona o Usuario com o Esp
@@ -19,6 +19,8 @@ const CadatroUsuarioEsp = async ( request, response)=>{
             })
         }
 
+        // Da update de nos relacionamentos antigos do esp para desabilitalos
+        const resposta = await db.query(SqlStatusUpdateUsuariosEsp, esp_id)
         // Cadastra o relacionamento do Usuario com Esp
         const values = [ usu_id, esp_id];
         const res = await db.query(SqlCadastroUsuarioEsp, values);

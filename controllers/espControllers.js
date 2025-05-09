@@ -18,10 +18,9 @@ const CadastroEsp = async( request, response)=>{
                 message: "invalid data"
             })
         }
+        
 
         // Cadastra o esp
-        console.log(esp_mac);
-        
         const res = await db.query( SqlCadastroEsp, esp_mac)
 
         //retorna sucesso
